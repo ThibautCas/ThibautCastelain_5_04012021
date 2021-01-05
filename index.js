@@ -1,5 +1,5 @@
-// Requete API //
-const url = "http://localhost:3000/api/furniture";
+// Request to API 
+let url = "http://localhost:3000/api/furniture";
 
 const getProducts = async function () {
   const response = await fetch(url);
@@ -34,7 +34,7 @@ async function listProducts() {
     `;
   
     // Append newyly created card element to the container
-    container.innerHTML += content;  
+    container.innerHTML += content; 
   });
 }
 listProducts();
