@@ -10,7 +10,7 @@ getProducts();
 async function listProducts() {
   const products = await getProducts();
 
-  let container = document.getElementById('container');
+  let container = document.getElementById('productContainer');
 
   products.forEach((result) => {
     // Create card element
@@ -19,14 +19,14 @@ async function listProducts() {
   
     // Construct card content
     const content = `
-    <div class="row">
     <div class="col-12 col-lg-4">
-      <div class="card mb-4 mb-lg-0 border-primary shadow">
+      <div class="card mb-4 border-primary shadow">
         <img src="${result.imageUrl}" alt="name" class="card-img-top" />
         <div class="card-body">
           <h5 class="card-title">${result.name}</h5>
           <p class="card-text">${result.description}</p>
           <p><strong>Prix : ${result.price}</strong></p>
+          <a href="./product.html" class="btn btn-primary">Plus d'informations</a>
         </div>
       </div>
     </div>
