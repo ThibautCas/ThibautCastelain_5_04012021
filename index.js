@@ -1,13 +1,9 @@
 // Request to API 
 let url = "http://localhost:3000/api/furniture";
-
-/*const getProducts = async function () {
-  const response = await fetch(url);
-  return await response.json();
-}*/
 getProducts();
 
-/*async function listProducts() {
+// Display products
+async function listProducts() {
   const products = await getProducts();
 
   let container = document.getElementById('productContainer');
@@ -24,8 +20,7 @@ getProducts();
         <img src="${result.imageUrl}" alt="name" class="card-img-top" />
         <div class="card-body">
           <h5 class="card-title">${result.name}</h5>
-          <p class="card-text">${result.description}</p>
-          <p><strong>Prix : ${result.price}</strong></p>
+          <p><strong>Prix : ${(result.price / 100)} €</strong></p>
           <a href="./product.html?id=${result._id}" class="btn btn-primary">Plus d'informations</a>
         </div>
       </div>
@@ -36,5 +31,5 @@ getProducts();
     // Append newyly created card element to the container
     container.innerHTML += content; 
   });
-}*/
+}
 listProducts();
