@@ -14,6 +14,14 @@ async function productDetails() {
     document.getElementById('product-img').setAttribute("src", `${product.imageUrl}`);
     document.getElementById('product-description').innerHTML = `${product.description}`;
     document.getElementById('product-price').innerHTML = `<strong>Prix : ${(product.price / 100)} €</strong>`;    
-};
 
+    // Display Options
+    let productOption = document.getElementById('option');
+    product.varnish.forEach(varnish => {
+        let option = document.createElement('option');
+        productOption.appendChild(option);
+        option.innerHTML = varnish;
+    });
+};
 productDetails();
+

@@ -6,10 +6,7 @@
       name="viewport "
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta
-      name="description"
-      content="Votre meuble personalisable"
-    />
+    <meta name="description" content="Votre meuble personalisable" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -53,12 +50,23 @@
       <div class="container">
         <div class="row" id="productContainer">
           <h1 id="product-name" class="text-center col-12">ProductName</h1>
-          <img id="product-img" class="col-12 my-5" src="" alt="Image du produit">
-          <p id="product-description" class="col-12">description</p>
-          <p id="product-price" class="col-12"><strong>Price</strong></p>
-          <p class="col-12 text-center">Options</p>
-
-
+          <img
+            id="product-img"
+            class="col-12 my-5"
+            src=""
+            alt="Image du produit"
+          />
+          <p class="h5" id="product-description" class="col-12">description</p>
+          <p class="h3" id="product-price" class="col-12">
+            <strong>Price</strong>
+          </p>
+          <label class="col-12 text-center" for="option">Choix du vernis</label>
+          <select class="col-12" name="option" id="option"></select>
+          <div class="col-12 text-center">
+            <button type="button" class="btn btn-primary mt-4">
+              Ajouter au panier
+            </button>
+          </div>
         </div>
       </div>
     </div>
