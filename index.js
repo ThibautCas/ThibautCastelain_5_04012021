@@ -17,7 +17,7 @@ async function listProducts() {
     const content = `
     <div class="col-12 col-lg-4">
       <div class="card mb-4 border-primary shadow">
-        <img src="${result.imageUrl}" alt="name" class="card-img-top" />
+        <img src="${result.imageUrl}" alt="Image du produit" class="card-img-top" />
         <div class="card-body">
           <h5 class="card-title">${result.name}</h5>
           <p><strong>Prix : ${(result.price / 100)} €</strong></p>

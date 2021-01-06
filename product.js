@@ -7,8 +7,13 @@ let url = "http://localhost:3000/api/furniture/" + productId;
 getProducts();
 
 // Display the product
-async function listProducts() {
+async function productDetails() {
     const product = await getProducts();
   
-    let container = document.getElementById('productContainer');
+    document.getElementById('product-name').innerHTML = `${product.name}`;
+    document.getElementById('product-img').setAttribute("src", `${product.imageUrl}`);
+    document.getElementById('product-description').innerHTML = `${product.description}`;
+    document.getElementById('product-price').innerHTML = `<strong>Prix : ${(product.price / 100)} €</strong>`;    
 };
+
+productDetails();
