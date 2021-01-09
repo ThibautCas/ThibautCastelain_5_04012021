@@ -8,7 +8,7 @@ getProducts();
 
 // Display the product
 async function productDetails() {
-    const product = await getProducts();
+    let product = await getProducts();
   
     document.getElementById('product-name').innerHTML = `${product.name}`;
     document.getElementById('product-img').setAttribute("src", `${product.imageUrl}`);
@@ -25,3 +25,14 @@ async function productDetails() {
 };
 productDetails();
 
+// Add article to basket 
+async function addToBasket() {
+    let product = await getProducts();
+    let basketBtn = document.getElementById("basket-btn");
+    basketBtn.addEventListener('click', async function() {
+        basket.push(product);
+        localStorage.setItem("myBasket", JSON.stringify(basket));
+        alert(`L'article a bien été ajouté à votre panier`);
+    } )
+}
+addToBasket();
