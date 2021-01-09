@@ -16,58 +16,69 @@
     <title>Produit Sélectionné</title>
   </head>
   <body>
-    <div class="bg-dark">
-      <div class="container">
-        <div class="row">
-          <nav class="col navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" href="index.html"> Orinoco </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbarContent" class="collapse navbar-collapse">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Accueil</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="panier.html">Panier</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+    <header>
+      <div class="bg-dark">
+        <div class="container">
+          <div class="row">
+            <nav class="col navbar navbar-expand-lg navbar-dark">
+              <a class="navbar-brand" href="index.html"> Orinoco </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div id="navbarContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Accueil</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="panier.html">Panier</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <div class="row" id="productContainer">
-          <h1 id="product-name" class="text-center col-12">ProductName</h1>
-          <img
-            id="product-img"
-            class="col-12 my-5"
-            src=""
-            alt="Image du produit"
-          />
-          <p class="h5" id="product-description" class="col-12">description</p>
-          <p class="h3" id="product-price" class="col-12">
-            <strong>Price</strong>
-          </p>
-          <label class="col-12 text-center" for="option">Choix du vernis</label>
-          <select class="col-12" name="option" id="option"></select>
-          <div class="col-12 text-center">
-            <button type="button" class="btn btn-primary mt-4" id="basket-btn">
-              Ajouter au panier
-            </button>
-          </div>
-          <a href="./index.html" class="btn btn-info m-4" role="button">
+    </header>
+    <main>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <div class="row" id="productContainer">
+            <h1 id="product-name" class="text-center col-12">ProductName</h1>
+            <img
+              id="product-img"
+              class="col-12 my-5"
+              src=""
+              alt="Image du produit"
+            />
+            <p class="h5" id="product-description" class="col-12">
+              description
+            </p>
+            <p class="h3" id="product-price" class="col-12">
+              <strong>Price</strong>
+            </p>
+            <label class="col-12 text-center" for="option"
+              >Choix du vernis</label
+            >
+            <select class="col-12" name="option" id="option"></select>
+            <div class="col-12 text-center">
+              <button
+                type="button"
+                class="btn btn-primary mt-4"
+                id="basket-btn"
+              >
+                Ajouter au panier
+              </button>
+            </div>
+            <a href="./index.html" class="btn btn-info m-4" role="button">
               Retour à l'Accueil
             </a>
             <a href="./panier.html" class="btn btn-info m-4" role="button">
@@ -76,28 +87,31 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="bg-dark mt-5">
-      <div class="container">
-        <div class="row pt-4 pb-3">
-          <div class="col">
-            <ul class="list-inline text-center">
-              <li class="list-inline-item">
-                <a class="text-secondary" href="#">À propos</a>
-              </li>
-              <li class="list-inline-item"></li>
-              <li class="list-inline-item">
-                <a class="text-secondary" href="#">Nous Contacter</a>
-              </li>
-              <li class="list-inline-item"></li>
-              <li class="list-inline-item">
-                <a class="text-secondary" href="#">Mentions Légales</a>
-              </li>
-            </ul>
+    </main>
+    <footer>
+      <div class="bg-dark mt-5">
+        <div class="container">
+          <div class="row pt-4 pb-3">
+            <div class="col">
+              <ul class="list-inline text-center">
+                <li class="list-inline-item">
+                  <a class="text-secondary" href="#">À propos</a>
+                </li>
+                <li class="list-inline-item"></li>
+                <li class="list-inline-item">
+                  <a class="text-secondary" href="#">Nous Contacter</a>
+                </li>
+                <li class="list-inline-item"></li>
+                <li class="list-inline-item">
+                  <a class="text-secondary" href="#">Mentions Légales</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </footer>
+
     <!--SCRIPT JS-->
     <script src="functions.js"></script>
     <script src="product.js"></script>
