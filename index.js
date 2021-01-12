@@ -1,16 +1,20 @@
 // Request to API 
-let url = "http://localhost:3000/api/furniture";
-getProducts();
+const getAllProducts = async function () {
+  let url = "http://localhost:3000/api/furniture";
+  const response = await fetch(url);
+  return await response.json();
+}
+getAllProducts();
 
 // Display products
 async function listProducts() {
-  const products = await getProducts();
+  const products = await getAllProducts();
 
   let container = document.getElementById('productContainer');
 
   products.forEach((result) => {
     // Create card element
-    const card = document.createElement('div');
+    let card = document.createElement('div');
     card.classList = 'row';
   
     // Construct card content

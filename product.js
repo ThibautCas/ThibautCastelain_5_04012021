@@ -3,12 +3,16 @@ const params = new URLSearchParams(window.location.search);
 let productId = params.get("id");
 
 // Request to API 
-let url = "http://localhost:3000/api/furniture/" + productId;
-getProducts();
+const getOneProduct = async function () {
+    let url = "http://localhost:3000/api/furniture/" + productId;
+    const response = await fetch(url);
+    return await response.json();
+  }
+getOneProduct();
 
 // Display the product
 async function productDetails() {
-    let product = await getProducts();
+    let product = await getOneProduct();
   
     document.getElementById('product-name').innerHTML = `${product.name}`;
     document.getElementById('product-img').setAttribute("src", `${product.imageUrl}`);
@@ -27,7 +31,7 @@ productDetails();
 
 // Add article to basket 
 async function addToBasket() {
-    let product = await getProducts();
+    let product = await getOneProduct();
     let basketBtn = document.getElementById("basket-btn");
     basketBtn.addEventListener('click', async function() {
         basket.push(product);
