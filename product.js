@@ -28,40 +28,41 @@ async function productDetails() {
     });
     // Event Listener On button click 
     let basketBtn = document.getElementById("basket-btn");
-    let quantity = 0;
+    let qty = 0;
     basketBtn.addEventListener('click', () => {
-            quantity++;
-            basketBtn.textContent = `Ajouté! + ${quantity}`;
+            qty++;
+            basketBtn.textContent = `Ajouté! + ${qty}`;
             addToBasket();
         });
+        // Add article to basket 
+        function addToBasket(data) {
+            let basket = [];
+            let saveProducts = {
+                _id: data._id,
+                name: data.name,
+                price: data.price,
+                quantity: 1
+            }
+            let productIsNew = true;
+            if(localStorage.getItem('basket') === null) {
+                basket.push(saveProducts);
+                localStorage.setItem('basket', JSON.stringify(basket));
+            } else {
+                basket = JSON.parse(localStorage.getItem('basket'));
+                basket.forEach((product) => {
+                    if (data._id === product._id) {
+                        product.quantity++;
+                        productIsNew = false;
+                    }
+                })
+                if (productIsNew) {
+                    basket.push(saveProducts);
+                }
+                localStorage.setItem('basket', JSON.stringify(basket));
+            } 
+        }
+        addToBasket(product);
 };
 productDetails();
 
-// Add article to basket 
-function addToBasket(product) {
-    let basket = [];
-    let saveProducts = {
-        _id: product._id,
-        name: product.name,
-        price: product.price,
-        quantity: 1
-    }
-    let productIsNew = true;
-    if(localStorage.getItem('basket') === null) {
-        basket.push(saveProducts);
-        localStorage.setItem('basket', JSON.stringify(basket));
-    } else {
-        basket = JSON.parse(localStorage.getItem('basket'));
-        basket.forEach((product) => {
-            if (data._id === product._id) {
-                product.quantity++;
-                productIsNew = false;
-            }
-        })
-        if (productIsNew) {
-            basket.push(saveProducts);
-        }
-        localStorage.setItem('basket', JSON.stringify(basket));
-    } 
-}
-addToBasket();
+
