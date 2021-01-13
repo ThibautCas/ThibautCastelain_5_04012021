@@ -26,17 +26,42 @@ async function productDetails() {
         productOption.appendChild(option);
         option.innerHTML = varnish;
     });
+    // Event Listener On button click 
+    let basketBtn = document.getElementById("basket-btn");
+    let quantity = 0;
+    basketBtn.addEventListener('click', () => {
+            quantity++;
+            basketBtn.textContent = `Ajouté! + ${quantity}`;
+            addToBasket();
+        });
 };
 productDetails();
 
 // Add article to basket 
-async function addToBasket() {
-    let product = await getOneProduct();
-    let basketBtn = document.getElementById("basket-btn");
-    basketBtn.addEventListener('click', async function() {
-        basket.push(product);
-        localStorage.setItem("myBasket", JSON.stringify(basket));
-        alert(`L'article a bien été ajouté à votre panier`);
-    } )
+function addToBasket(product) {
+    let basket = [];
+    let saveProducts = {
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        quantity: 1
+    }
+    let productIsNew = true;
+    if(localStorage.getItem('basket') === null) {
+        basket.push(saveProducts);
+        localStorage.setItem('basket', JSON.stringify(basket));
+    } else {
+        basket = JSON.parse(localStorage.getItem('basket'));
+        basket.forEach((product) => {
+            if (data._id === product._id) {
+                product.quantity++;
+                productIsNew = false;
+            }
+        })
+        if (productIsNew) {
+            basket.push(saveProducts);
+        }
+        localStorage.setItem('basket', JSON.stringify(basket));
+    } 
 }
 addToBasket();

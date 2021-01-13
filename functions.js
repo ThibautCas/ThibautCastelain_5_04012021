@@ -1,2 +1,0 @@
-  // Creating basket
-  let basket = [];
