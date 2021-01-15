@@ -51,7 +51,7 @@ function basketDisplay() {
  
   // Clear the basket
   let emptyBasket = document.createElement("button");
-  emptyBasket.classList = "btn btn-warning text-center";
+  emptyBasket.classList = "btn btn-warning text-center m-4";
   emptyBasket.innerHTML = 'Vider le panier';
   document.getElementById("container").appendChild(emptyBasket);
   emptyBasket.addEventListener('click', () => {
@@ -61,8 +61,29 @@ function basketDisplay() {
 
   // Displays the input for the customer's details
   let customerDetails = document.createElement("div");
-  customerDetails.classList = "text-center ";
-  customerDetails.innerHTML = ``;
+  customerDetails.innerHTML = `<form>
+  <div class="form-group">
+    <label for="firstName">Prénom</label>
+    <input type="text" class="form-control" id="firstName" placeholder="Jean" required>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Nom</label>
+    <input type="text" class="form-control" id="lastName" placeholder="Dupont" required>
+  </div>
+  <div class="form-group">
+    <label for="address">Adresse</label>
+    <input type="text" class="form-control" id="address" placeholder="12 rue de la Paix" required>
+  </div>
+  <div class="form-group">
+    <label for="city">Ville</label>
+    <input type="text" class="form-control" id="city" placeholder="Paris" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Adresse e-mail</label>
+    <input type="email" class="form-control" id="email" placeholder="jeandupont@mail.com" required>
+  </div>
+  <button type="submit" class="btn btn-success">Valider la commande</button>
+</form>`;
   document.getElementById("container").appendChild(customerDetails);
    }
 }
