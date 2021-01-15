@@ -29,7 +29,6 @@ function basketDisplay() {
                 }</div>
               </div>
             </div>
-            <div>picto poubelle</div>
           </div>
           
         </div>
@@ -37,7 +36,7 @@ function basketDisplay() {
       // Append newyly created card element to the container
       container.innerHTML += content;
     });
-    // displays the price to pay
+    // Displays the price to pay
     function totalPrice() {
       let ttlPrice = 0;
       customerBasket.forEach((product) => {
@@ -49,11 +48,22 @@ function basketDisplay() {
       document.getElementById("container").appendChild(priceTotal);
     }
     totalPrice();
-  }
+ 
+  // Clear the basket
+  let emptyBasket = document.createElement("button");
+  emptyBasket.classList = "btn btn-warning text-center";
+  emptyBasket.innerHTML = 'Vider le panier';
+  document.getElementById("container").appendChild(emptyBasket);
+  emptyBasket.addEventListener('click', () => {
+    localStorage.clear();
+    location.reload();
+    });
+
   // Displays the input for the customer's details
   let customerDetails = document.createElement("div");
   customerDetails.classList = "text-center ";
-  customerDetails.innerHTML = `<div>Coordonnées</div>`;
+  customerDetails.innerHTML = ``;
   document.getElementById("container").appendChild(customerDetails);
+   }
 }
 basketDisplay();
