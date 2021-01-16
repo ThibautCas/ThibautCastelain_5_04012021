@@ -4,6 +4,17 @@ function basketDisplay() {
     document.querySelector("h1").remove();
     // display articles in basket
     let container = document.getElementById("container");
+    let tableTop = document.createElement("table");
+    tableTop.classList = "table table-bordered text-center";
+    tableTop.innerHTML = `<thead>
+    <tr>
+      <th scope="col">Produit</th>
+      <th scope="col">Prix à l'unité</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Prix</th>
+    </tr>
+  </thead>`;
+  document.getElementById("container").appendChild(tableTop);
     let customerBasket = JSON.parse(localStorage.getItem("basket"));
     customerBasket.forEach((product) => {
       let card = document.createElement("div");
@@ -11,25 +22,17 @@ function basketDisplay() {
 
       // Construct card content
       const content = `
-    <div class="row text-center">
-          <div class="d-flex ">
-            <div class="col-10">
-              <div class="d-flex m-3">
-                <div class="col-5">${product.name}</div>
-                <div class="col-2"></div>
-                <div class="col-5">Prix à l'unité : ${
-                  product.price / 100
-                } €</div>
-              </div>
-              <div class="d-flex m-3">
-                <div class="col-4">Quantité :${product.quantity}</div>
-                <div class="col-4"></div>
-                <div class="col-4">Prix : ${
-                  (product.price / 100) * product.quantity
-                }</div>
-              </div>
-            </div>
-          </div>
+    <div class="row justify-content-center">
+    <table class="table table-bordered text-center">
+    <tbody>
+      <tr>
+        <td>${product.name}</td>
+        <td>${product.price / 100}</td>
+        <td>${product.quantity}</td>
+        <td>${(product.price / 100) * product.quantity}</td>
+      </tr>
+    </tbody>
+  </table>
           
         </div>
     `;
@@ -43,25 +46,25 @@ function basketDisplay() {
         ttlPrice += (product.price / 100) * product.quantity;
       });
       let priceTotal = document.createElement("div");
-      priceTotal.classList = "row text-center";
-      priceTotal.innerHTML = `Prix total : ${ttlPrice} €`;
+      priceTotal.classList = "row justify-content-center h4";
+      priceTotal.innerHTML = `<strong>Prix total : ${ttlPrice} €</strong>`;
       document.getElementById("container").appendChild(priceTotal);
     }
     totalPrice();
- 
-  // Clear the basket
-  let emptyBasket = document.createElement("button");
-  emptyBasket.classList = "btn btn-warning text-center m-4";
-  emptyBasket.innerHTML = 'Vider le panier';
-  document.getElementById("container").appendChild(emptyBasket);
-  emptyBasket.addEventListener('click', () => {
-    localStorage.clear();
-    location.reload();
+
+    // Clear the basket
+    let emptyBasket = document.createElement("button");
+    emptyBasket.classList = "btn btn-warning justify-content-center m-4";
+    emptyBasket.innerHTML = "Vider le panier";
+    document.getElementById("container").appendChild(emptyBasket);
+    emptyBasket.addEventListener("click", () => {
+      localStorage.clear();
+      location.reload();
     });
 
-  // Displays the input for the customer's details
-  let customerDetails = document.createElement("div");
-  customerDetails.innerHTML = `<form>
+    // Displays the input for the customer's details
+    let customerDetails = document.createElement("div");
+    customerDetails.innerHTML = `<form>
   <div class="form-group">
     <label for="firstName">Prénom</label>
     <input type="text" class="form-control" id="firstName" placeholder="Jean" required>
@@ -82,9 +85,14 @@ function basketDisplay() {
     <label for="email">Adresse e-mail</label>
     <input type="email" class="form-control" id="email" placeholder="jeandupont@mail.com" required>
   </div>
-  <button type="submit" class="btn btn-success">Valider la commande</button>
-</form>`;
-  document.getElementById("container").appendChild(customerDetails);
-   }
+  <button type="submit" class="btn btn-success m-3">Valider la commande</button>
+  </form>
+  <a href="./index.html" class="btn btn-info m-5" role="button">
+              Retour à l'Accueil
+            </a>
+            `;
+    document.getElementById("container").appendChild(customerDetails);
+  }
 }
 basketDisplay();
+

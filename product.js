@@ -66,7 +66,7 @@ async function productDetails() {
         basket.push(saveProducts);
       }
       localStorage.setItem("basket", JSON.stringify(basket));
-      location.reload();
+      numberArticles();
     }
   }
 }
