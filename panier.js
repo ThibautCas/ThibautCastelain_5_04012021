@@ -3,9 +3,8 @@ function basketDisplay() {
   if (localStorage.getItem("basket") !== null) {
     document.querySelector("h1").remove();
     // display articles in basket
-    let container = document.getElementById("container");
     let tableTop = document.createElement("table");
-    tableTop.classList = "table table-bordered text-center";
+    tableTop.classList = "table table-bordered text-center m-0";
     tableTop.innerHTML = `<thead>
     <tr>
       <th scope="col">Produit</th>
@@ -15,15 +14,12 @@ function basketDisplay() {
     </tr>
   </thead>`;
   document.getElementById("container").appendChild(tableTop);
-    let customerBasket = JSON.parse(localStorage.getItem("basket"));
+    
+  let customerBasket = JSON.parse(localStorage.getItem("basket"));
     customerBasket.forEach((product) => {
-      let card = document.createElement("div");
-      card.classList = "row";
 
       // Construct card content
       const content = `
-    <div class="row justify-content-center">
-    <table class="table table-bordered text-center">
     <tbody>
       <tr>
         <td>${product.name}</td>
@@ -32,12 +28,10 @@ function basketDisplay() {
         <td>${(product.price / 100) * product.quantity}</td>
       </tr>
     </tbody>
-  </table>
           
-        </div>
     `;
       // Append newyly created card element to the container
-      container.innerHTML += content;
+      tableTop.innerHTML += content;
     });
     // Displays the price to pay
     function totalPrice() {
@@ -46,7 +40,7 @@ function basketDisplay() {
         ttlPrice += (product.price / 100) * product.quantity;
       });
       let priceTotal = document.createElement("div");
-      priceTotal.classList = "row justify-content-center h4";
+      priceTotal.classList = "row justify-content-center h4 m-5";
       priceTotal.innerHTML = `<strong>Prix total : ${ttlPrice} €</strong>`;
       document.getElementById("container").appendChild(priceTotal);
     }
@@ -64,7 +58,9 @@ function basketDisplay() {
 
     // Displays the input for the customer's details
     let customerDetails = document.createElement("div");
-    customerDetails.innerHTML = `<form>
+    customerDetails.innerHTML = `
+    <h2 class="text-center m-5">Vos coordonnées</h2>
+    <form>
   <div class="form-group">
     <label for="firstName">Prénom</label>
     <input type="text" class="form-control" id="firstName" placeholder="Jean" required>
@@ -85,11 +81,13 @@ function basketDisplay() {
     <label for="email">Adresse e-mail</label>
     <input type="email" class="form-control" id="email" placeholder="jeandupont@mail.com" required>
   </div>
-  <button type="submit" class="btn btn-success m-3">Valider la commande</button>
-  </form>
-  <a href="./index.html" class="btn btn-info m-5" role="button">
+  <div class="d-flex justify-content-between m-5">
+    <a href="./index.html" class="btn btn-info" role="button">
               Retour à l'Accueil
-            </a>
+    </a>
+    <button type="submit" class="btn btn-success">Valider la commande</button>
+  </div>
+  </form>
             `;
     document.getElementById("container").appendChild(customerDetails);
   }
