@@ -96,14 +96,14 @@ function basketDisplay() {
       contact: {},
       products: [],
     };
-    document.querySelector("form").addEventListener('submit', function (send) {
+    document.querySelector("form").addEventListener('submit', function () {
     
     customerOrder.contact = {
-      firstName = document.getElementById('firstName').value,
-      lastName = document.getElementById('lastName').value,
-      address = document.getElementById('address').value,
-      city = document.getElementById('city').value,
-      email = document.getElementById('email').value,
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      address: document.getElementById('address').value,
+      city: document.getElementById('city').value,
+      email: document.getElementById('email').value,
     };
 
     customerBasket.forEach((product) => {
