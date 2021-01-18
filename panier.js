@@ -90,6 +90,27 @@ function basketDisplay() {
   </form>
             `;
     document.getElementById("container").appendChild(customerDetails);
+
+  // Getting customer details and order
+    let customerOrder = {
+      contact: {},
+      products: [],
+    };
+    document.querySelector("form").addEventListener('submit', function (send) {
+    
+    customerOrder.contact = {
+      firstName = document.getElementById('firstName').value,
+      lastName = document.getElementById('lastName').value,
+      address = document.getElementById('address').value,
+      city = document.getElementById('city').value,
+      email = document.getElementById('email').value,
+    };
+
+    customerBasket.forEach((product) => {
+      customerOrder.products.push(product._id);
+      });
+    
+    });
   }
 }
 basketDisplay();
