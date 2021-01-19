@@ -13,11 +13,10 @@ function basketDisplay() {
       <th scope="col">Prix</th>
     </tr>
   </thead>`;
-  document.getElementById("container").appendChild(tableTop);
-    
-  let customerBasket = JSON.parse(localStorage.getItem("basket"));
-    customerBasket.forEach((product) => {
+    document.getElementById("container").appendChild(tableTop);
 
+    let customerBasket = JSON.parse(localStorage.getItem("basket"));
+    customerBasket.forEach((product) => {
       // Construct card content
       const content = `
     <tbody>
@@ -91,27 +90,47 @@ function basketDisplay() {
             `;
     document.getElementById("container").appendChild(customerDetails);
 
-  // Getting customer details and order
+    // Getting customer details and order
     let customerOrder = {
       contact: {},
       products: [],
     };
-    document.querySelector("form").addEventListener('submit', function () {
-    
+
     customerOrder.contact = {
-      firstName: document.getElementById('firstName').value,
-      lastName: document.getElementById('lastName').value,
-      address: document.getElementById('address').value,
-      city: document.getElementById('city').value,
-      email: document.getElementById('email').value,
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      address: document.getElementById("address").value,
+      city: document.getElementById("city").value,
+      email: document.getElementById("email").value,
     };
 
     customerBasket.forEach((product) => {
       customerOrder.products.push(product._id);
-      });
-    
     });
+
+    const sendData = async (data) => {
+      const settings = {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch(
+        `http://localhost:3000/api/furniture/order`,
+        settings
+      );
+      if (!response.ok) throw Error(response.message);
+      try {
+        const myData = await response.json();
+        return myData;
+      } catch (err) {
+        throw err;
+      }
+    };
+    document
+      .querySelector("form")
+      .addEventListener("submit", sendData(customerOrder));
   }
 }
 basketDisplay();
-
