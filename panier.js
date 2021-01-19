@@ -91,22 +91,6 @@ function basketDisplay() {
     document.getElementById("container").appendChild(customerDetails);
 
     // Getting customer details and order
-    let customerOrder = {
-      contact: {},
-      products: [],
-    };
-
-    customerOrder.contact = {
-      firstName: document.getElementById("firstName").value,
-      lastName: document.getElementById("lastName").value,
-      address: document.getElementById("address").value,
-      city: document.getElementById("city").value,
-      email: document.getElementById("email").value,
-    };
-
-    customerBasket.forEach((product) => {
-      customerOrder.products.push(product._id);
-    });
 
     const sendData = async (data) => {
       const settings = {
@@ -123,14 +107,34 @@ function basketDisplay() {
       if (!response.ok) throw Error(response.message);
       try {
         const myData = await response.json();
-        return myData;
+        localStorage.clear();
+        window.location = `confirmation.html?id=${myData.orderId}&user=${myData.contact.firstName}`;
       } catch (err) {
         throw err;
       }
     };
     document
       .querySelector("form")
-      .addEventListener("submit", sendData(customerOrder));
+      .addEventListener("submit", async function(e) {
+        e.preventDefault();
+        let customerOrder = {
+          contact: {},
+          products: [],
+        };
+    
+        customerOrder.contact = {
+          firstName: document.getElementById("firstName").value,
+          lastName: document.getElementById("lastName").value,
+          address: document.getElementById("address").value,
+          city: document.getElementById("city").value,
+          email: document.getElementById("email").value,
+        };
+    
+        customerBasket.forEach((product) => {
+          customerOrder.products.push(product._id);
+        });
+        sendData(customerOrder);
+      });
   }
 }
 basketDisplay();
