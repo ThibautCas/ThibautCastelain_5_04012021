@@ -51,8 +51,10 @@ function basketDisplay() {
     emptyBasket.innerHTML = "Vider le panier";
     document.getElementById("container").appendChild(emptyBasket);
     emptyBasket.addEventListener("click", () => {
-      localStorage.clear();
-      location.reload();
+      if(window.confirm('Etes-vous sûr de vouloir vider le panier ?')) {
+        localStorage.clear();
+        location.reload();
+      };
     });
 
     // Displays the input for the customer's details
