@@ -82,11 +82,11 @@ function basketDisplay() {
     <label for="email">Adresse e-mail</label>
     <input type="email" class="form-control" id="email" placeholder="jeandupont@mail.com" required>
   </div>
-  <div class="d-flex justify-content-between m-5">
-    <a href="./index.html" class="btn btn-info" role="button">
+  <div class="d-flex justify-content-between m-md-5">
+    <a href="./index.html" class="btn btn-info m-3" role="button">
               Retour à l'Accueil
     </a>
-    <button type="submit" class="btn btn-success">Valider la commande</button>
+    <button type="submit" class="btn btn-success m-3">Valider la commande</button>
   </div>
   </form>
             `;

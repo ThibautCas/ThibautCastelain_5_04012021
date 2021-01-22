@@ -1,3 +1,43 @@
 // -----------------------------------------------------------------------------
 // This file contains all @font-face declarations, if any.
 // -----------------------------------------------------------------------------
+.navbar-brand {
+    font-size: 3rem;
+    @media (min-width: 450px) and (max-width: 769px) {
+        font-size: 2rem;
+    }
+    @media (min-width: 1024px){
+        font-size: 1.25rem;
+    }
+}
+
+.display-4 {
+    @media (max-width: 450px) {
+        font-size: 4rem;
+    }
+}
+.lead {
+ font-size: 2rem;
+ font-weight: 400;
+}
+.card-title {
+ @media (max-width: 450px) {
+      font-size: 2.5rem;
+ }
+}
+p {
+     @media (max-width: 450px) {
+         font-size: 2rem;
+     }
+    }
+.btn {
+    @media (min-width: 300px) and (max-width: 450px) {
+        font-size: 2rem;
+    }
+}
+.text-secondary {
+    @media (min-width: 300px) and (max-width:450px) {
+        font-size: 2.5rem;
+    }
+}
+

@@ -1,0 +1,8 @@
+#productContainer img {
+    -o-object-fit: scale-down;
+       object-fit: scale-down;
+       height: -webkit-fill-available;
+       height: -moz-available;
+       height: stretch;
+}
+      
